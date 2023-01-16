@@ -79,8 +79,8 @@ class HomeApp extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed('/new-contact');
+        onPressed: () async{
+          await Navigator.of(context).pushNamed('/new-contact');
         },
         child: const Icon(Icons.add),
       ),
