@@ -31,6 +31,9 @@ class ContactBook extends ValueNotifier<List<Contact>> {
   int get length => value.length;
 
   void add({required Contact contact}) {
+    //This will not call set function in ValueNotifier
+    // as it have  notifyListeners() in set function to invoke it's listeners
+    // so we have to use notifyListeners() as below
     value.add(contact);
     notifyListeners();
   }
@@ -79,7 +82,7 @@ class HomeApp extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async{
+        onPressed: () async {
           await Navigator.of(context).pushNamed('/new-contact');
         },
         child: const Icon(Icons.add),
@@ -136,3 +139,5 @@ class _NewContactViewState extends State<NewContactView> {
     );
   }
 }
+
+
